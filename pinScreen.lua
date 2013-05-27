@@ -52,7 +52,7 @@ function pinScreen:onFoundValidPin(pin)
 end
 
 function pinScreen:validatePin()
-	for i,v in ipairs(validPins) do
+	for i,v in ipairs(self.validPins) do
 		if(v == self.pin) then
 			self:onFoundValidPin(v)
 			break
