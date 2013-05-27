@@ -31,7 +31,7 @@ pinScreen = class.class(ui.screen, function(self, monitor, validPins, foundValid
 		
 function pinScreen:pinClickEvent(button)
 	self.pin = self.pin .. button.tag
-	local pinLength = string.len(pin)
+	local pinLength = string.len(self.pin)
 	if pinLength == 4 then
 		self:validatePin()
 	else
@@ -40,7 +40,7 @@ function pinScreen:pinClickEvent(button)
 end
 
 function pinScreen:draw()
-	self.pinDisplay:setText(self.pinDisplayText)
+	self.pinDisplay:setText("PIN: ".. self.pinDisplayText)
 	self._base.draw(self)
 	
 end
