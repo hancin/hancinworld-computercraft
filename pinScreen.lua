@@ -52,10 +52,17 @@ function pinScreen:onFoundValidPin(pin)
 end
 
 function pinScreen:validatePin()
+	local isValid = false
 	for i,v in ipairs(self.validPins) do
 		if(v == self.pin) then
+			isValid = true
 			self:onFoundValidPin(v)
 			break
 		end
+	end
+	
+	if not isValid then
+		self.pin = ""
+		self.pinDisplayText = ""
 	end
 end
