@@ -9,7 +9,7 @@ screen = class.class(function(self, monitor)
 
 function screen:addDrawable(component)
 	if component == nil then
-		print("[Screen] Not adding nil drawable.")
+		class.debug("[Screen] Not adding nil drawable.")
 		return self
 	end
 	local i = #self.drawables + 1
@@ -20,7 +20,7 @@ end
 
 function screen:addClickable(component)
 	if component == nil then
-		print("[Screen] Not adding nil clickable.")
+		class.debug("[Screen] Not adding nil clickable.")
 		return self
 	end
 	local i = #self.clickables + 1
@@ -85,7 +85,7 @@ function program:waitEvent()
 		handled = self.screen:handleClickEvent(x,y)
 	end
 	if not handled then
-		print(string.format("[Program] Unhandled click event at %d, %d", x, y))
+		class.debug(string.format("[Program] Unhandled click event at %d, %d", x, y))
 	end
 end
 
@@ -129,7 +129,7 @@ function button:handleClickEvent(x, y)
 	local hitX = x >= self.x and x <= self.x + self.width
 	local hitY = y >= self.y and y <= self.y + self.height
 	if hitX and hitY then
-		print(string.format("[Button] Button with name %q at position %d, %d was clicked!", self.text, self.x, self.y))
+		class.debug(string.format("[Button] Button with name %q at position %d, %d was clicked!", self.text, self.x, self.y))
 		if self.isDisabled == false and self.clickEvent ~= nil then
 			local data = {}
 			data.x = x
@@ -162,7 +162,7 @@ function button:updateTextData()
 	local missingLength = self.width - string.len(self.text);
 	if missingLength < 0 then
 		self.paddedText = self.text
-		print("[Button] Error, text too big for button")
+		class.debug("[Button] Error, text too big for button")
 	else
 		local beg = math.floor(missingLength / 2)
 		self.paddedText = string.rep(" ", beg) .. self.text .. string.rep(" ", missingLength - beg)
@@ -174,7 +174,7 @@ end
 
 function button:setSize(width, height)
 	if width < 1 or height < 1 then
-		print("[Button] Error, invalid size")
+		class.debug("[Button] Error, invalid size")
 		return self;
 	end
 	self.width = width

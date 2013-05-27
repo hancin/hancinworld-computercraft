@@ -43,3 +43,7 @@ function class(base, init)
    setmetatable(c, mt)
    return c
 end
+
+function debug(stmt)
+	print(stmt)
+end
