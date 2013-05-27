@@ -61,8 +61,6 @@ function pinScreen:validatePin()
 		end
 	end
 	
-	if not isValid then
-		self.pin = ""
-		self.pinDisplayText = "----"
-	end
+	self.pin = ""
+	self.pinDisplayText = "----"
 end
